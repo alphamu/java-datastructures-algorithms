@@ -5,10 +5,25 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
-mainClassName = "com.alimuzaffar.test.Main"
-
 repositories {
     mavenCentral()
+}
+
+// Allows you to run this classing using:
+// ./gradlew run
+mainClassName = "com.alimuzaffar.test.Main"
+
+// Allows you to run a main class using:
+// ./gradlew runApp -PmainName=XmasTree
+task runApp(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    if (project.hasProperty('mainClass')) {
+        main = "com.alimuzaffar.test.${mainClass}"
+    } else {
+        main = "com.alimuzaffar.test.Main"
+    }
+    // Optional arguments to pass to the app
+    //args "arg1", "arg2"
 }
 
 dependencies {
