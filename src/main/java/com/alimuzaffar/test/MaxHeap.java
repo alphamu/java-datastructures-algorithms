@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class MaxHeap {
 
-    public int [] heap;
-    public int count = 0;
-    public MaxHeap() {
+    private int [] heap;
+    private int count = 0;
+    MaxHeap() {
         heap = new int[]{-1, -1, -1, -1, -1, -1, -1};
     }
 
-    public void insert(int val) {
+    void insert(int val) {
         if (count == heap.length) {
             heap = Arrays.copyOf(heap, count * 2);
         }
@@ -26,7 +26,7 @@ public class MaxHeap {
         count++;
     }
 
-    public int pop() {
+    int pop() {
         int temp = heap[0];
         heap[0] = heap[count - 1];
         heap[count - 1] = -1;
@@ -77,7 +77,7 @@ public class MaxHeap {
         }
     }
 
-    public int size() {
+    int size() {
         return count;
     }
 

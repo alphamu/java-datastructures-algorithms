@@ -2,8 +2,8 @@ package com.alimuzaffar.test;
 
 import java.util.Arrays;
 
-public class BinarySearch {
-    public static int search(int [] array, int value) {
+class BinarySearch {
+    static int search(int[] array, int value) {
         if (array == null || array.length == 0) {
             return -1;
         }
