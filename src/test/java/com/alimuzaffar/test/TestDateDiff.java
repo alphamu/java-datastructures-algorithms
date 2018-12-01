@@ -11,22 +11,22 @@ import java.util.Date;
 public class TestDateDiff {
     @Test
     public void testNextDay() {
-        DateDiff.ADate one = new DateDiff.ADate(2018, 01, 01);
-        DateDiff.ADate two = new DateDiff.ADate(2018, 01, 02);
+        DateDiff.ADate one = new DateDiff.ADate(2018, 1, 1);
+        DateDiff.ADate two = new DateDiff.ADate(2018, 1, 2);
         Assert.assertEquals(0, one.diff(two));
     }
 
     @Test
     public void testYearChange() {
         DateDiff.ADate one = new DateDiff.ADate(2017, 12, 30);
-        DateDiff.ADate two = new DateDiff.ADate(2018, 01, 01);
+        DateDiff.ADate two = new DateDiff.ADate(2018, 1, 1);
         Assert.assertEquals(1, one.diff(two));
     }
 
     @Test
     public void testSameYearDiffMonth() {
-        DateDiff.ADate one = new DateDiff.ADate(2018, 01, 29);
-        DateDiff.ADate two = new DateDiff.ADate(2018, 02, 01);
+        DateDiff.ADate one = new DateDiff.ADate(2018, 1, 29);
+        DateDiff.ADate two = new DateDiff.ADate(2018, 2, 1);
         Assert.assertEquals(2, one.diff(two));
     }
 

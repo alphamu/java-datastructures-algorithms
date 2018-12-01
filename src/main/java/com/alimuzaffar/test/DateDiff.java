@@ -11,25 +11,25 @@ public class DateDiff {
 
     static class ADate {
         static ADate peg = new ADate("01/01/1900");
-        public static long[] MONTH_DAYS = new long[] {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        static long[] MONTH_DAYS = new long[] {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         long year;
         long month;
         long day;
 
-        public ADate(String date) {
+        ADate(String date) {
             String [] split = date.split("/");
             year = Long.valueOf(split[2]);
             month = Long.valueOf(split[1]);
             day = Long.valueOf(split[0]);
         }
 
-        public ADate(long year, long month, long day) {
+        ADate(long year, long month, long day) {
             this.year = year;
             this.month = month;
             this.day = day;
         }
 
-        public long diff(ADate other) {
+        long diff(ADate other) {
             long daysSincePeg1 = daysSincePeg(this);
             System.out.println("This date " + daysSincePeg1);
             long daysSincePeg2 = daysSincePeg(other);
@@ -37,7 +37,7 @@ public class DateDiff {
             return Math.abs(daysSincePeg1 - daysSincePeg2) - 1; //exclude the start date
         }
 
-        public long daysSincePeg(ADate date) {
+        long daysSincePeg(ADate date) {
             // Calculate years in days
             long totalDays = 0;
             // calculate days since start of year
@@ -71,7 +71,7 @@ public class DateDiff {
             return totalDays;
         }
 
-        public boolean isLeapYear(long year) {
+        boolean isLeapYear(long year) {
             if (year % 4 != 0) {
                 return false;
             } else if (year % 100 != 0) {
