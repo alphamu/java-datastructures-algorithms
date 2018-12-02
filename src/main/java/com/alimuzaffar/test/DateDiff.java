@@ -3,10 +3,11 @@ package com.alimuzaffar.test;
 public class DateDiff {
 
     public static void main(String [] args) {
-        ADate one = new ADate(args[0]);
-        ADate two = new ADate(args[1]);
+        ADate one = new ADate("01/01/2018");
+        ADate two = new ADate("02/02/2018");
 
         long diff = one.diff(two);
+        System.out.printf("Days between %s and %s are %d\n", one, two, diff);
     }
 
     static class ADate {
@@ -39,7 +40,7 @@ public class DateDiff {
 
         long daysSincePeg(ADate date) {
             // Calculate years in days
-            long totalDays = 0;
+            long totalDays;
             // calculate days since start of year
             long daysSinceStartOfYear = date.day - 1; // don't include the current day
             int m = (int) date.month - 1;
@@ -85,6 +86,10 @@ public class DateDiff {
 
         public ADate clone() {
             return new ADate(year, month, day);
+        }
+
+        public String toString() {
+            return day + "/" + month + "/" + year;
         }
     }
 }

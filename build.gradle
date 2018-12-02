@@ -14,9 +14,10 @@ repositories {
 mainClassName = "com.alimuzaffar.test.Main"
 
 // Allows you to run a main class using:
-// ./gradlew runApp -PmainName=XmasTree
+// ./gradlew runApp -PmainClass=XmasTree
 task runApp(type: JavaExec) {
     classpath sourceSets.main.runtimeClasspath
+    System.out.println("here ${mainClass}")
     if (project.hasProperty('mainClass')) {
         main = "com.alimuzaffar.test.${mainClass}"
     } else {
