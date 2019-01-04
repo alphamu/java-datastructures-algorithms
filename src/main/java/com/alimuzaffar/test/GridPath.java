@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// Solution adapted from https://www.youtube.com/watch?v=KiCBXu4P-2Y
 public class GridPath {
 
     public static void main(String[] args) {
@@ -54,16 +55,11 @@ public class GridPath {
 
                 if (r < 0 || r >= map.length) continue;
                 if (c < 0 || c >= map.length) continue;
-//                if (map[r][c] == 2) {
-//                    System.out.println("Steps are " + queue.size());
-//                    queue.clear();
-//                    break;
-//                }
+
                 if (map[r][c] != 1) { // 1 being the blocker
                     int [] add = new int[]{r, c};
                     String addStr = Arrays.toString(add);
                     if (!found.contains(addStr)) {
-
                         System.out.println(r + "," + c);
                         found.push(addStr);
                         queue.push(add);
