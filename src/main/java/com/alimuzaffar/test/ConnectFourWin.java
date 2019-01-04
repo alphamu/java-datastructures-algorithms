@@ -4,10 +4,10 @@ package com.alimuzaffar.test;
 Code to check if we have won a game of connect four
  */
 public class ConnectFourWin {
-    //board size
-    private static int[][] board = new int[10][10];
     public static void main(String [] args) {
-        board = new int[][] {
+        // board size doesn't matter as long as both dimensions
+        // are at least 4
+        int[][] board = new int[][]{
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -17,12 +17,23 @@ public class ConnectFourWin {
                 {0, 0, 2, 2, 2, 1, 2, 0, 0, 0},
         };
 
-        hasWon(board);
+        int result = hasWon(board);
+        if (result > 0) {
+            System.out.printf("Player %d wins!\n", result);
+        } else if (result == 0) {
+            System.out.println("No winner yet.");
+        } else {
+            System.out.println("Game draw.");
+        }
     }
 
     private static int hasWon(int[][] board) {
-        int [] row = new int[] {0,  0,  0,  0, 0, 0, 0, 0, 0, 0, -1, -2, -3, 0, 1, 2, 3, 0, -1, -2, -3, 0, 1, 2, 3, 0,  1,  2,  3, 0, -1, -2, -3};
-        int [] col = new int[] {0, -1, -2, -3, 0, 1, 2, 3, 4, 0,  0,  0,  0, 0, 0, 0, 0, 0, -1, -2, -3, 0, 1, 2, 3, 0, -1, -2, -3, 0,  1,  2,  3};
+        // These can be created programmatically but are left hard coded
+        // for documentation purposes.
+        // when row and column both contain 0 at an index, it means a new check
+        // is starting from that index.
+        int [] row = new int[] {0,  0,  0,  0, 0, 0, 0, 0, 0, -1, -2, -3, 0, 1, 2, 3, 0, -1, -2, -3, 0, 1, 2, 3, 0,  1,  2,  3, 0, -1, -2, -3};
+        int [] col = new int[] {0, -1, -2, -3, 0, 1, 2, 3, 0,  0,  0,  0, 0, 0, 0, 0, 0, -1, -2, -3, 0, 1, 2, 3, 0, -1, -2, -3, 0,  1,  2,  3};
 
         int sameCount = 0;
         int previous = 0;
@@ -39,7 +50,6 @@ public class ConnectFourWin {
                         empty++;
                         sameCount = 0;
                         previous = 0;
-                        System.out.println("Clear, Index " + i);
 
                     } else {
                         // If we are checking 0, 0, we need to reset the count
@@ -53,7 +63,7 @@ public class ConnectFourWin {
                         } else {
                             sameCount++;
                             if (sameCount == 4) {
-                                System.out.println("Player " + curVal + " Wins");
+                                // Game won by player represented by curVal
                                 return curVal;
                             }
                         }
@@ -64,10 +74,10 @@ public class ConnectFourWin {
         }
 
         if (empty == 0) {
-            System.out.println("Draw");
+            // Draw
             return -1;
         } else {
-            System.out.println("No winnter yet");
+            // Still empty cells, no winner yet
             return 0;
         }
     }
