@@ -13,20 +13,6 @@ repositories {
 // ./gradlew run
 mainClassName = "com.alimuzaffar.test.Main"
 
-// Allows you to run a main class using:
-// ./gradlew runApp -PmainClass=XmasTree
-task runApp(type: JavaExec) {
-    classpath sourceSets.main.runtimeClasspath
-    System.out.println("here ${mainClass}")
-    if (project.hasProperty('mainClass')) {
-        main = "com.alimuzaffar.test.${mainClass}"
-    } else {
-        main = "com.alimuzaffar.test.Main"
-    }
-    // Optional arguments to pass to the app
-    //args "arg1", "arg2"
-}
-
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
