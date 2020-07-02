@@ -8,7 +8,7 @@ public class Legionaries {
     public static void main(String[] args) {
         int total = 0;
         for (int i = 1; i <= 2660; i++) {
-            String r = RomanNumerals(i);
+            String r = toRomanNumerals(i);
             total += countChar(r, 'X');
         }
         System.out.println("total is " + total);
@@ -24,7 +24,7 @@ public class Legionaries {
         return total;
     }
 
-    public static String RomanNumerals(int num) {
+    public static String toRomanNumerals(int num) {
         StringBuilder res = new StringBuilder();
         for (Map.Entry<String, Integer> entry : romanNumerals.entrySet()) {
             int matches = num / entry.getValue();
